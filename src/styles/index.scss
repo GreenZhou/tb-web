@@ -1,0 +1,446 @@
+@import './variables.scss';
+@import './mixin.scss';
+@import './transition.scss';
+@import './element-ui.scss';
+@import './sidebar.scss';
+@import './btn.scss';
+body {
+  height: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+#app {
+  height: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.no-padding {
+  padding: 0 !important;
+}
+
+.no-border{
+  border: none!important;
+}
+
+.padding-content {
+  padding: 4px 0;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+div:focus {
+  outline: none;
+}
+
+.fr {
+  float: right;
+}
+
+.fl {
+  float: left;
+}
+
+.pr-5 {
+  padding-right: 5px;
+}
+
+.pl-5 {
+  padding-left: 5px;
+}
+
+.block {
+  display: block;
+}
+
+.none{
+  display: none;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.inlineBlock {
+  display: block;
+}
+
+.clearfix {
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+}
+
+.w100{
+  width: 100%;
+}
+
+.nowrap{
+  overflow:hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.wordGrey {
+  color: #eee;
+  vertical-align: top;
+}
+.wordGreen {
+  color: #13ce66;
+}
+.wordRed {
+  color: #ff0000;
+}
+.wordBlod{
+  font-weight: bold;
+}
+
+code {
+  background: #eef1f6;
+  padding: 15px 16px;
+  margin-bottom: 20px;
+  display: block;
+  line-height: 36px;
+  font-size: 15px;
+  font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+
+  a {
+    color: #337ab7;
+    cursor: pointer;
+
+    &:hover {
+      color: rgb(32, 160, 255);
+    }
+  }
+}
+
+.warn-content {
+  background: rgba(66, 185, 131, .1);
+  border-radius: 2px;
+  padding: 16px;
+  padding: 1rem;
+  line-height: 1.6rem;
+  word-spacing: .05rem;
+
+  a {
+    color: #42b983;
+    font-weight: 600;
+  }
+}
+
+//main-container全局样式
+.app-container {
+  padding: 20px;
+}
+
+.components-container {
+  margin: 30px 50px;
+  position: relative;
+}
+
+.text-center {
+  text-align: center
+}
+
+.sub-navbar {
+  height: 50px;
+  line-height: 50px;
+  position: relative;
+  width: 100%;
+  text-align: right;
+  padding-right: 20px;
+  transition: 600ms ease position;
+  background: linear-gradient(90deg, rgba(32, 182, 249, 1) 0%, rgba(32, 182, 249, 1) 0%, rgba(33, 120, 241, 1) 100%, rgba(33, 120, 241, 1) 100%);
+
+  .subtitle {
+    font-size: 20px;
+    color: #fff;
+  }
+
+  &.draft {
+    background: #d0d0d0;
+  }
+
+  &.deleted {
+    background: #d0d0d0;
+  }
+}
+
+.link-type,
+.link-type:focus {
+  color: #337ab7;
+  cursor: pointer;
+
+  &:hover {
+    color: rgb(32, 160, 255);
+  }
+}
+
+.filter-container {
+  padding-bottom: 10px;
+
+  .filter-item {
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 10px;
+  }
+}
+
+//refine vue-multiselect plugin
+.multiselect {
+  line-height: 16px;
+}
+
+.multiselect--active {
+  z-index: 1000 !important;
+}
+
+// //去掉滚动条
+// ::-webkit-scrollbar {
+//   display: none;
+// }
+//滚动条整体样式
+::-webkit-scrollbar {
+  height: 10px;/*高宽分别对应横竖滚动条的尺寸*/
+  width: 6px;
+}
+//滚动条里面小方块
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.2);
+  background-image: -webkit-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.2) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.2) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+//滚动条里面轨道
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2) inset;
+  background: #ffffff;
+}
+
+//滚动条边角，即两个滚动条的交汇处
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+
+// baseheader: 头部信息
+.baseHeaderBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px dashed #eef0f2;
+  .baseHeaderRight {
+    padding-right: 16px;
+  }
+}
+
+// tableBox: table+搜索+分页样式
+.tableBox{
+  padding: 16px 16px;
+  //tableHeader：table头部信息/分页样式
+  .tableHeader {
+    display: flex;
+    justify-content: space-between;
+    line-height: 30px;
+    margin-bottom:4px;
+    font-size: 14px;
+    span {
+      font-weight: 700;
+    }
+    .tableHeaderRight {
+      color: #999;
+      em {
+        color: #0095ff;
+        font-style: normal;
+      }
+      button {
+        padding-left: 6px;
+        padding-right: 6px;
+      }
+    }
+  }
+  //table-footer：table底部按钮/分页样式
+  .tableFooter {
+    height: 52px;
+    .fl,
+    .fr {
+      padding-top: 16px;
+    }
+    .tableCheckAll {
+      width: 55px;
+      text-align: center;
+      padding-right: 0;
+    }
+  }
+}
+
+// batchImport: 批量导入样式
+.batchImport {
+  .batchImportTop {
+    color: #999;
+    background-color: #f3f4f4;
+    padding: 8px;
+    border-radius: 3px;
+    margin-bottom: 16px;
+    font-size: 12px;
+    p {
+      padding: 0;
+      margin: 0;
+    }
+    a {
+      color: #2192d9;
+    }
+  }
+  .batchImportMiddle {
+    .uploadPersonTitile {
+      margin-bottom: 4px;
+    }
+    .uploadPersonTitile:before {
+      display: inline-block;
+      margin-right: 4px;
+      content: "*";
+      font-family: SimSun;
+      color: red;
+    }
+  }
+  .batchImportBottom {
+    font-size: 16px;
+    .batchImportBottomTitle {
+      padding: 16px 0 10px 0;
+      .iconLeft {
+        color: #2192d9;
+      }
+    }
+    table {
+      width: 100%;
+      font-size: 14px;
+      border-collapse: collapse;
+      tr {
+        td {
+          border: 1px solid #c6cbd1;
+          padding: 8px 8px;
+          span {
+            color: #2192d9;
+            padding-left: 12px;
+          }
+        }
+        td:first-child {
+          text-align: right;
+          background: #f6f6f6;
+          width: 38%;
+        }
+      }
+    }
+  }
+}
+
+//projectBox: 项目输入表单及附件样式
+ .ProjectItemBox {
+  padding: 0 0 20px 0;
+  .mainTitle {
+    color: #2d8cf0;
+    margin: 0 0 10px 0;
+    padding: 35px 0 10px 0;
+    border-bottom: 1px dashed #2d8cf0;
+    .fromBtn{
+      margin-top: -12px;
+    }
+  }
+  .fileBox {
+    padding: 20px 10px;
+    a {
+      display: block;
+      line-height: 24px;
+    }
+    a:hover ,.downloadIcon{
+      color: #2192d9;
+    }
+    .deleteBtn{
+      cursor: pointer;
+      color: #ff0000;
+      opacity: .6;
+    }
+    .deleteBtn:hover{
+      opacity: 1;
+    }
+
+  }
+
+  .el-form-item{
+    width: 48%;
+    padding:0 20px;
+  }
+  .el-form-item--medium .el-form-item__content{
+    width: 70% !important;
+  }
+  .el-input.is-disabled .el-input__inner {
+    cursor: pointer;
+  }
+  .el-textarea.is-disabled .el-textarea__inner{
+    cursor: pointer;
+  }
+}
+
+// 处理table头部错位
+body .el-table th.gutter{
+  display: table-cell!important;
+}
+
+.pointer{
+  cursor: pointer;
+}
+
+// 部门新增人员，部门ree
+#tree .el-tree-node {
+
+  .is-leaf + .el-checkbox .el-checkbox__inner {
+    display: inline-block;
+  }
+
+  .el-checkbox .el-checkbox__inner {
+    display: none
+  }
+
+}
